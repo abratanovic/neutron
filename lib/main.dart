@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:neutron/ffi_wrapper.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  MainApp({super.key});
+
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _controller,
+            ),
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: () {
+                print(add(3, 6));
+              },
+              child: const Text("Search"),
+            ),
+          ],
         ),
       ),
     );
